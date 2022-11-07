@@ -1,0 +1,4 @@
+.terraform
+terraform.tf*
+kindcluster*.yaml
+.terraform.tfstate.lock.info

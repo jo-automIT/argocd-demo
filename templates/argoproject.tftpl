@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: "${name}"
+  namespace: argo-cd
+  # Finalizer that ensures that project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: a test project
+  # Allow manifests to deploy from any Git repos
+  sourceRepos:
+  - 'https://github.com/tubenhirn/argocd-example-apps.git'
+  # Only permit applications to deploy to the test namespace in the same and in one remote cluster
+  destinations:
+  - namespace: test
+    server: https://kubernetes.default.svc
+  - namespace: "${destinationNamespace}"
+    server: "${destinationServer}"
+  # Deny all cluster-scoped resources from being created, except for Namespace
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  # Allow all namespaced-scoped resources to be created, except for ResourceQuota, LimitRange, NetworkPolicy
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+  # Deny all namespaced-scoped resources from being created, except for Deployment and Service
+  namespaceResourceWhitelist:
+  - group: 'apps'
+    kind: Deployment
+  - group: ''
+    kind: Service

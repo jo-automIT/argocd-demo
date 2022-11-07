@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik.local
+  namespace: traefik-system
+spec:
+  dnsNames:
+    - traefik.local
+    - argocd.local
+  secretName: traefik.local
+  issuerRef:
+    name: test-selfsigned
+    kind: ClusterIssuer
