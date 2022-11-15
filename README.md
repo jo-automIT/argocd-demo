@@ -64,6 +64,13 @@ this can be done by editing the parameters inside the argocd webinterface.
 image.tag=0.2
 ```
 
+or using the kubectl plugin
+
+```shell
+# worker 1
+k argo rollouts set image bluegreendemoapp-0-helm-guestbook helm-guestbook=gcr.io/heptio-images/ks-guestbook-demo:0.2
+```
+
 now we can visit both versions of the application through different services.
 
 ```shell
