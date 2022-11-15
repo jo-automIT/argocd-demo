@@ -80,13 +80,21 @@ k port-forward svc/bluegreendemoapp-0-helm-guestbook 8080:80
 k port-forward svc/bluegreendemoapp-0-helm-guestbook-preview 8081:80
 ```
 
-to finish the rollout, promote it.
+to finish the rollout, promote it
 
 ```shell
 # worker 1
 k argo rollouts promote bluegreendemoapp-1-helm-guestbook
 # worker 2
 k argo rollouts promote bluegreendemoapp-1-helm-guestbook
+```
+
+or undo the rollout.
+```shell
+# worker 1
+k argo rollouts undo bluegreendemoapp-0-helm-guestbook
+# worker 2
+k argo rollouts undo bluegreendemoapp-1-helm-guestbook
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
