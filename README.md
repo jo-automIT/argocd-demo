@@ -58,7 +58,7 @@ k argo rollouts dashboard
 to trigger a rollout change any configuration inside the rollout resource.
 
 we set the image-tag to **0.2** to get a new verion of the application.\
-this can be done by editing the parameters inside the argocd webinterface or the rollout resource (with k edit ...).
+this can be done by editing the parameters inside the argocd webinterface.
 
 ```shell
 image.tag=0.2
