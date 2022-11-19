@@ -54,7 +54,7 @@ data "external" "kube_config_client_string_worker" {
 }
 
 terraform {
-  required_version = ">=1.2.7"
+  required_version = "1.3.5"
 
   required_providers {
     null = {

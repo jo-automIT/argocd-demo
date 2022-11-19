@@ -15,8 +15,8 @@ repos:
     # - id: terraform_tfsec
     # - id: terrascan
     - id: tfupdate
-      args:
-      - --args=--version 1.2.7
+      # args:
+      # - --args=--version 1.2.7
     # - id: infracost_breakdown
     #   args:
     #     - --args=--path=.
